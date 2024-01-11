@@ -1,6 +1,12 @@
 {
     "type": "project",
-    "license": "proprietary",
+    "license": "GPL-3.0-only",
+    "authors": [
+        {
+            "name": "Silvio Kennecke",
+            "role": "developer"
+        }
+    ],
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
