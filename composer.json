@@ -60,7 +60,7 @@
     },
     "autoload": {
         "psr-4": {
-            "SilvioKenencke\\ClubEventCalendar\\": "src/"
+            "SilvioKennecke\\ClubEventCalendar\\": "src/"
         }
     },
     "autoload-dev": {
