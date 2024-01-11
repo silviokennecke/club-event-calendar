@@ -54,12 +54,12 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "SilvioKenencke\\ClubEventCalendar\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Tests\\": "tests/"
+            "SilvioKennecke\\ClubEventCalendar\\Tests\\": "tests/"
         }
     },
     "replace": {
