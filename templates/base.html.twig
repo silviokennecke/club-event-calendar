@@ -1,17 +1,75 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+{% block base_html %}
+<html lang="en"
+    itemscope="itemscope"
+    itemtype="https://schema.org/WebPage">
 
-        {% block javascripts %}
-{% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% block base_head %}
+        {% include 'layout/meta.html.twig' %}
+    {% endblock %}
+
+    {% block base_body %}
+        <body>
+
+        {% block base_body_inner %}
+            {% block base_noscript %}
+{#                <noscript class="noscript-main">#}
+{#                    {% include 'utilities/alert.html.twig' with {#}
+{#                        type: 'info',#}
+{#                        content: 'general.noscriptNotice'|trans|sw_sanitize#}
+{#                    } %}#}
+{#                </noscript>#}
+            {% endblock %}
+
+            {% block base_header %}
+                <header class="header-main">
+                    {% block base_header_inner %}
+                        <div class="container">
+                            {% include 'layout/header/header.html.twig' %}
+                        </div>
+                    {% endblock %}
+                </header>
+            {% endblock %}
+
+            {% block base_navigation %}
+                <div class="nav-main">
+                    {% block base_navigation_inner %}
+                        {% include 'layout/navigation/navigation.html.twig' %}
+                    {% endblock %}
+                </div>
+            {% endblock %}
+
+            {% block base_main %}
+                <main class="content-main">
+                    {% block base_flashbags %}
+                        <div class="flashbags container">
+                            {% for type, messages in app.flashes %}
+                                {% include 'utilities/alert.html.twig' with { type: type, list: messages } %}
+                            {% endfor %}
+                        </div>
+                    {% endblock %}
+
+                    {% block base_main_inner %}
+                        <div class="container">
+                            {% block base_main_container %}
+                                <div class="container-main">
+                                    {% block base_content %}{% endblock %}
+                                </div>
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+                </main>
+            {% endblock %}
+
+            {% block base_footer %}
+                <footer class="footer-main">
+                    {% block base_footer_inner %}
+                        {% include 'layout/footer/footer.html.twig' %}
+                    {% endblock %}
+                </footer>
+            {% endblock %}
         {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+        </body>
+    {% endblock %}
 </html>
+{% endblock %}
