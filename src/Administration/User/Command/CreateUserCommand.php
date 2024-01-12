@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace SilvioKennecke\ClubEventCalendar\Administration\User\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
-use SilvioKennecke\ClubEventCalendar\Administration\User\Entity\User;
+use SilvioKennecke\ClubEventCalendar\Administration\User\UserEntity;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -54,7 +54,7 @@ class CreateUserCommand extends Command
         $password = $helper->ask($input, $output, $question);
 
         // create user
-        $user = new User();
+        $user = new UserEntity();
         $user->setName($input->getArgument('name'));
         $user->setEmail($input->getArgument('email'));
         $user->setPassword($this->passwordHasher->hashPassword($user, $password));

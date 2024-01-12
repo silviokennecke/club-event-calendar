@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SilvioKennecke\ClubEventCalendar\Administration\User\Entity;
+namespace SilvioKennecke\ClubEventCalendar\Administration\User;
 
 use Doctrine\ORM\Mapping as ORM;
 use SilvioKennecke\ClubEventCalendar\Administration\User\Repository\UserRepository;
@@ -10,8 +10,9 @@ use SilvioKennecke\ClubEventCalendar\Framework\ORM\EntityIdTrait;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-#[ORM\Entity(repositoryClass: UserRepository::class, )]
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+#[ORM\Entity(repositoryClass: UserRepository::class)]
+#[ORM\Table(name: 'user')]
+class UserEntity implements UserInterface, PasswordAuthenticatedUserInterface
 {
     use EntityIdTrait;
 
