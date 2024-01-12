@@ -12,7 +12,7 @@ This project provides a web application helping clubs to plan events and distrib
 * Add properties and target groups to events
 * Export the events into a ICS file
 * Export the events into a PDF file
-* Allow you r members to subscribe to only the events they are interested in
+* Allow your members to subscribe to only the events they are interested in
 
 ## Installation
 
@@ -21,8 +21,8 @@ This section will be extended, later in this project.
 
 ```bash
 # update configuration
-cp .env.dist .env.local
-nano .env
+cp .env .env.local
+nano .env.local
 
 # install everything
 composer install
