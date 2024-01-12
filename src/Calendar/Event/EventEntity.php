@@ -11,13 +11,18 @@ use SilvioKennecke\ClubEventCalendar\Calendar\Feature\FeatureEntity;
 use SilvioKennecke\ClubEventCalendar\Calendar\Location\LocationEntity;
 use SilvioKennecke\ClubEventCalendar\Calendar\Property\PropertyEntity;
 use SilvioKennecke\ClubEventCalendar\Calendar\TargetGroup\TargetGroupEntity;
+use SilvioKennecke\ClubEventCalendar\Framework\ORM\CreatedAtTrait;
 use SilvioKennecke\ClubEventCalendar\Framework\ORM\EntityIdTrait;
+use SilvioKennecke\ClubEventCalendar\Framework\ORM\UpdatedAtTrait;
 
 #[ORM\Entity]
+#[ORM\HasLifecycleCallbacks]
 #[ORM\Table(name: 'event')]
 class EventEntity
 {
     use EntityIdTrait;
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
 
     #[ORM\Column(type: 'string', nullable: false)]
     private string $name;

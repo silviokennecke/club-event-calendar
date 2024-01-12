@@ -6,15 +6,20 @@ namespace SilvioKennecke\ClubEventCalendar\Administration\User;
 
 use Doctrine\ORM\Mapping as ORM;
 use SilvioKennecke\ClubEventCalendar\Administration\User\Repository\UserRepository;
+use SilvioKennecke\ClubEventCalendar\Framework\ORM\CreatedAtTrait;
 use SilvioKennecke\ClubEventCalendar\Framework\ORM\EntityIdTrait;
+use SilvioKennecke\ClubEventCalendar\Framework\ORM\UpdatedAtTrait;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 #[ORM\Table(name: 'user')]
 class UserEntity implements UserInterface, PasswordAuthenticatedUserInterface
 {
     use EntityIdTrait;
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
 
     #[ORM\Column(type: 'string', length: 50, nullable: false)]
     private string $name;
