@@ -56,7 +56,23 @@ app:
                 error: The property %name% could not be updated.
             delete:
                 success: The property %name% has been deleted.
-
+        targetGroups:
+            title: Target Groups
+            description: |
+                Target groups are groups of people for whom the event is intended.
+                The target group is displayed in the event title.
+            name: Name
+            empty: No target groups available.
+            create:
+                title: Create new target group
+                success: The target group %name% has been created.
+                error: The target group could not be created.
+            edit:
+                title: Edit target group
+                success: The target group %name% has been updated.
+                error: The target group %name% could not be updated.
+            delete:
+                success: The target group %name% has been deleted.
 
 
 flashes:

@@ -57,6 +57,23 @@ app:
                     success: Die Eigenschaft %name% wurde aktualisiert.
                     error: Die Eigenschaft %name% konnte nicht aktualisiert werden.
                 delete: Die Eigenschaft %name% wurde gelöscht.
+        targetGroups:
+            title: Zielgruppen
+            description: |
+                Für jede Veranstaltung kann die Zielgruppe definiert werden.
+                Mitglieder können so alle Veranstaltungen ausblenden lassen, die für sie nicht relevant sind.
+            name: Name
+            empty: Keine Zielgruppen vorhanden.
+            create:
+                title: Neue Zielgruppe erstellen
+                success: Die Zielgruppe %name% wurde erstellt.
+                error: Die Zielgruppe konnte nicht erstellt werden.
+            edit:
+                title: Zielgruppe bearbeiten
+                success: Die Zielgruppe %name% wurde aktualisiert.
+                error: Die Zielgruppe %name% konnte nicht aktualisiert werden.
+            delete:
+                success: Die Zielgruppe %name% wurde gelöscht.
 
 
 

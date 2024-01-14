@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% set metaTitle = 'app.calendar.targetGroups.title'|trans %}
+
+{% block base_content %}
+    <h1>{{ 'app.calendar.targetGroups.title'|trans }}</h1>
+
+    <p>{{ 'app.calendar.targetGroups.description'|trans }}</p>
+
+    {% if targetGroups|length > 0 %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>{{ 'app.calendar.targetGroups.name'|trans }}</th>
+                    <th>{{ 'app.general.createdAt'|trans }}</th>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <th></th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for targetGroup in targetGroups %}
+                    <tr>
+                        <td>{{ targetGroup.name }}</td>
+                        <td>{{ targetGroup.createdAt|date }}</td>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <td>
+                                <a href="{{ path('app.calendar.target-group.edit', {id: targetGroup.id}) }}" class="btn btn-light">{{ 'app.general.edit'|trans }}</a>
+                                <form action="{{ path('app.calendar.target-group.delete', {id: targetGroup.id}) }}" method="post" class="d-inline-block">
+                                    <button type="submit" class="btn btn-danger">{{ 'app.general.delete'|trans }}</button>
+                                </form>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>{{ 'app.calendar.targetGroups.empty'|trans }}</p>
+    {% endif %}
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="accordion">
+            <div class="accordion-item" id="createAccordion">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#createForm" aria-expanded="true" aria-controls="createForm">
+                        {{ 'app.calendar.targetGroups.create.title'|trans }}
+                    </button>
+                </h2>
+                <div id="createForm" class="accordion-collapse collapse" data-bs-parent="#createAccordion">
+                    <div class="accordion-body">
+                        {{ form(createForm) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}
