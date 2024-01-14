@@ -100,20 +100,12 @@
         {% endblock %}
 
         {% block layout_head_stylesheet %}
-{#            {% set assets = theme_config('assets.css') %}#}
-{#            {% for file in assets %}#}
-{#                <link rel="stylesheet"#}
-{#                      href="{{ asset(file, 'theme') }}">#}
-{#            {% endfor %}#}
         {% endblock %}
 
         {% block layout_head_javascript %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-{#            {% set assets = theme_config('assets.css') %}#}
-{#            {% for file in assets %}#}
-{#                <link rel="stylesheet"#}
-{#                      href="{{ asset(file, 'theme') }}">#}
-{#            {% endfor %}#}
+            {% block layout_head_javascript_importmap %}
+                {{ importmap('app') }}
+            {% endblock %}
         {% endblock %}
     </head>
 {% endblock %}

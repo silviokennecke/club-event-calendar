@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="sass:build --watch" type="PhpLocalRunConfigurationType" factoryName="PHP Console" folderName="Development" path="$PROJECT_DIR$/bin/console" scriptParameters="sass:build --watch">
+    <method v="2" />
+  </configuration>
+</component>
