@@ -3,6 +3,19 @@ app:
         title: Club Event Calendar
         email: E-Mail
         password: Password
-    login:
-        title: Login
-        submit: Login
+        logout: Logout
+    account:
+        my-profile:
+            title: My Account
+        login:
+            title: Login
+            submit: Login
+    calendar:
+        title: Calendar
+        settings:
+            title: Basic Settings
+        event-templates:
+            title: Templates
+flashes:
+    logout:
+        success: You have been logged out.

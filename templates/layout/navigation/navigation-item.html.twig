@@ -1,0 +1,28 @@
+{% block layout_navigation_item %}
+    {% if acl is not defined or acl == null or is_granted(acl) %}
+        {% if children is defined and children|length > 0 %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ label }}
+                </a>
+
+                <ul class="dropdown-menu">
+                    {% for child in children %}
+                        {% if child.children is not defined %}
+                            {% set child = child|merge({
+                                children: []
+                            }) %}
+                        {% endif %}
+
+                        {% include 'layout/navigation/navigation-item.html.twig' with child %}
+                    {% endfor %}
+                </ul>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link{% if route == app.current_route %} active{% endif %}" aria-current="page" href="{{ path(route) }}">
+                    {{ label }}
+                </a>
+            </li>
+        {% endif %}
+    {% endif %}
+{% endblock %}

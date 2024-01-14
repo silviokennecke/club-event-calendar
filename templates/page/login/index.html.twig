@@ -6,7 +6,7 @@
     <div class="card">
 
         <div class="card-body">
-            <h1 class="card-title">{{ 'app.login.title'|trans }}</h1>
+            <h1 class="card-title">{{ 'app.account.login.title'|trans }}</h1>
 
             {% if error %}
                 {% include 'utilities/alert.html.twig' with {
@@ -32,7 +32,7 @@
                 <input type="hidden" name="_target_path" value="/account"> #}
 
                 <div class="mb-3">
-                    <button type="submit" class="btn btn-primary">{{ 'app.login.submit'|trans }}</button>
+                    <button type="submit" class="btn btn-primary">{{ 'app.account.login.submit'|trans }}</button>
                 </div>
             </form>
         </div>

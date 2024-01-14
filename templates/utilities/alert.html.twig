@@ -1,5 +1,9 @@
+{% if list is not defined %}
+    {% set list = '' %}
+{% endif %}
+
 {% if content is not defined %}
-    {% set content = '' %}
+    {% set content = [] %}
 {% endif %}
 
 {% if dismissible is not defined %}
@@ -13,7 +17,19 @@
             <div class="alert-content-container">
                 {% block utilities_alert_content %}
                     <div class="alert-content">
-                        {{ content }}
+                        {% if list|length > 1 %}
+                            <ul class="alert-list">
+                                {% for entry in list %}
+                                    <li>{{ entry }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% elseif list|length == 1 %}
+                            {% for entry in list %}
+                                {{ entry }}
+                            {% endfor %}
+                        {% else %}
+                            {{ content }}
+                        {% endif %}
                     </div>
                 {% endblock %}
 

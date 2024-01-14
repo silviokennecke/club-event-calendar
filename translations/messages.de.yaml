@@ -3,6 +3,19 @@ app:
         title: Club Event Calendar
         email: E-Mail
         password: Passwort
-    login:
-        title: Login
-        submit: Login
+        logout: Abmelden
+    account:
+        my-profile:
+            title: Mein Konto
+        login:
+            title: Login
+            submit: Login
+    calendar:
+        title: Kalender
+        settings:
+            title: Grundeinstellungen
+        event-templates:
+            title: Vorlagen
+flashes:
+    logout:
+        success: Sie wurden abgemeldet.

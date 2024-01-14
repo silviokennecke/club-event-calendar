@@ -1,27 +1,89 @@
 {% block layout_main_navigation %}
-<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
-    <div class="container-fluid">
-        {% block layout_main_navigation_inner %}
-            <a class="navbar-brand" href="#">
-                {{ 'app.general.title'|trans }}
-            </a>
+    {% if navigationRoutes is not defined %}
+        {% set navigationRoutes = [
+            {
+                label: 'app.calendar.title'|trans,
+                route: 'app.calendar',
+            },
+            {
+                acl: 'ROLE_ADMIN',
+                label: 'app.calendar.event-templates.title'|trans,
+                route: 'app.event_template.list',
+            },
+            {
+                acl: 'ROLE_ADMIN',
+                label: 'app.calendar.settings.title'|trans,
+                children: [
+                    {
+                        label: 'app.calendar.features.title'|trans,
+                        route: 'app.event_template.list',
+                    },
+                    {
+                        label: 'app.calendar.properties.title'|trans,
+                        route: 'app.event_template.list',
+                    },
+                    {
+                        label: 'app.calendar.target-groups.title'|trans,
+                        route: 'app.event_template.list',
+                    },
+                ],
+            },
+        ] %}
+    {% endif %}
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    {% if navigationProfileRoutes is not defined %}
+        {% set navigationProfileRoutes = {
+            loggedIn: [
+                {
+                    label: 'app.account.my-profile.title'|trans,
+                    route: 'app.logout',
+                },
+                {
+                    label: 'app.general.logout'|trans,
+                    route: 'app.logout',
+                },
+            ],
+            loggedOut: [
+                {
+                    label: 'app.account.login.title'|trans,
+                    route: 'app.login',
+                },
+            ],
+        } %}
+    {% endif %}
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
-        {% endblock %}
-    </div>
-</nav>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+        <div class="container-fluid">
+            {% block layout_main_navigation_inner %}
+                <a class="navbar-brand" href="#">
+                    {{ 'app.general.title'|trans }}
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        {% for navigationRoute in navigationRoutes %}
+                            {% include 'layout/navigation/navigation-item.html.twig' with navigationRoute %}
+                        {% endfor %}
+                    </ul>
+
+                    <ul class="navbar-nav">
+                        {% if is_granted('ROLE_USER') %}
+                            {% include 'layout/navigation/navigation-item.html.twig' with {
+                                label: app.user.name,
+                                children: navigationProfileRoutes.loggedIn,
+                            } %}
+                        {% else %}
+                            {% for profileRoute in navigationProfileRoutes.loggedOut %}
+                                {% include 'layout/navigation/navigation-item.html.twig' with profileRoute %}
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                </div>
+            {% endblock %}
+        </div>
+    </nav>
 {% endblock %}
