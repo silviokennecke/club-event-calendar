@@ -73,6 +73,28 @@ app:
                 error: The target group %name% could not be updated.
             delete:
                 success: The target group %name% has been deleted.
+        locations:
+            title: Locations
+            description: |
+                Locations are places where events take place.
+                The location is displayed in the event title.
+            name: Name
+            address: Address
+            latitude: Latitude
+            longitude: Longitude
+            empty: No locations available.
+            updateFromAddress: Update coordinates from address
+            updateFromCoordinates: Update address from coordinates
+            create:
+                title: Create new location
+                success: The location %name% has been created.
+                error: The location could not be created.
+            edit:
+                title: Edit location
+                success: The location %name% has been updated.
+                error: The location %name% could not be updated.
+            delete:
+                success: The location %name% has been deleted.
 
 
 flashes:

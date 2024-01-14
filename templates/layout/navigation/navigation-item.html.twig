@@ -8,13 +8,7 @@
 
                 <ul class="dropdown-menu">
                     {% for child in children %}
-                        {% if child.children is not defined %}
-                            {% set child = child|merge({
-                                children: []
-                            }) %}
-                        {% endif %}
-
-                        {% include 'layout/navigation/navigation-item.html.twig' with child %}
+                        {% include 'layout/navigation/navigation-item.html.twig' with child only %}
                     {% endfor %}
                 </ul>
         {% else %}

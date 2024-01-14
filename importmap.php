@@ -33,4 +33,11 @@ return [
     '@popperjs/core' => [
         'version' => '2.11.8',
     ],
+    'leaflet' => [
+        'version' => '1.9.4',
+    ],
+    'leaflet/dist/leaflet.min.css' => [
+        'version' => '1.9.4',
+        'type' => 'css',
+    ],
 ];

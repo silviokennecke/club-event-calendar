@@ -1,0 +1,20 @@
+{% use 'bootstrap_5_layout.html.twig' %}
+
+{% block map_widget %}
+    <div data-map-form-target="map"
+         data-map-form-geocoder-address-url="{{ path(data.addressGeocoderRoute) }}"
+         data-map-form-geocoder-reverse-url="{{ path(data.reverseGeocoderRoute) }}"
+         data-map-form-marker-img="{{ asset('vendor/leaflet/dist/images/marker-icon.png') }}"
+         style="height: 300px;"
+    ></div>
+
+    {# TODO: check if geocoder is disabled #}
+
+    <button type="button" class="btn btn-light" data-action="click->map-form#geocodeAddress">
+        {{ 'app.calendar.locations.updateFromAddress'|trans }}
+    </button>
+
+    <button type="button" class="btn btn-light" data-action="click->map-form#reverseGeocode">
+        {{ 'app.calendar.locations.updateFromCoordinates'|trans }}
+    </button>
+{% endblock %}

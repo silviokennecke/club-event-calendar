@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% set metaTitle = 'app.calendar.locations.title'|trans %}
+
+{% block base_content %}
+    <h1>{{ 'app.calendar.locations.title'|trans }}</h1>
+
+    <p>{{ 'app.calendar.locations.description'|trans }}</p>
+
+    {% if locations|length > 0 %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>{{ 'app.calendar.locations.name'|trans }}</th>
+                    <th>{{ 'app.calendar.locations.address'|trans }}</th>
+                    <th>{{ 'app.general.createdAt'|trans }}</th>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <th></th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for location in locations %}
+                    <tr>
+                        <td>{{ location.name }}</td>
+                        <td>{{ location.address }}</td>
+                        <td>{{ location.createdAt|date }}</td>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <td>
+                                <a href="{{ path('app.calendar.location.edit', {id: location.id}) }}" class="btn btn-light">{{ 'app.general.edit'|trans }}</a>
+                                <form action="{{ path('app.calendar.location.delete', {id: location.id}) }}" method="post" class="d-inline-block">
+                                    <button type="submit" class="btn btn-danger">{{ 'app.general.delete'|trans }}</button>
+                                </form>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>{{ 'app.calendar.locations.empty'|trans }}</p>
+    {% endif %}
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="accordion">
+            <div class="accordion-item" id="createAccordion">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#createForm" aria-expanded="true" aria-controls="createForm">
+                        {{ 'app.calendar.locations.create.title'|trans }}
+                    </button>
+                </h2>
+                <div id="createForm" class="accordion-collapse collapse show" data-bs-parent="#createAccordion">
+                    <div class="accordion-body">
+                        {% include 'page/location/form.html.twig' with {
+                            form: createForm,
+                        } %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}

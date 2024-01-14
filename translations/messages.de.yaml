@@ -74,6 +74,28 @@ app:
                 error: Die Zielgruppe %name% konnte nicht aktualisiert werden.
             delete:
                 success: Die Zielgruppe %name% wurde gelöscht.
+        locations:
+            title: Orte
+            description: |
+                Für jede Veranstaltung kann ein Ort definiert werden.
+                Dies hilft Ihren Mitgliedern die Veranstaltung zu finden.
+            name: Name
+            address: Adresse
+            latitude: Breitengrad
+            longitude: Längengrad
+            empty: Keine Orte vorhanden.
+            updateFromAddress: Koordinaten aus Adresse aktualisieren
+            updateFromCoordinates: Adresse aus Koordinaten aktualisieren
+            create:
+                title: Neue Ort erstellen
+                success: Die Ort %name% wurde erstellt.
+                error: Die Ort konnte nicht erstellt werden.
+            edit:
+                title: Ort bearbeiten
+                success: Die Ort %name% wurde aktualisiert.
+                error: Die Ort %name% konnte nicht aktualisiert werden.
+            delete:
+                success: Die Ort %name% wurde gelöscht.
 
 
 
