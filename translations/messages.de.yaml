@@ -23,6 +23,9 @@ app:
             title: Vorlagen
         features:
             title: Besonderheiten
+            description: |
+                Besonderheiten können die Veranstaltungen näher beschreiben.
+                Sind für eine Veranstaltung Besonderheiten hinterlegt, werden diese zusätzlich im Titel angezeigt.
             name: Name
             empty: Keine Besonderheiten vorhanden.
             create:
@@ -37,6 +40,9 @@ app:
                 success: Die Besonderheit %name% wurde gelöscht.
         properties:
             title: Eigenschaften
+            description: |
+                Eigenschaften sind Merkmale, die eine Veranstaltung haben kann.
+                Das Icon wird im Veranstaltungstitel angezeigt.
             icon: Icon
             name: Name
             empty: Keine Eigenschaften vorhanden.

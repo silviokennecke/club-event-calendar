@@ -23,6 +23,9 @@ app:
             title: Templates
         features:
             title: Features
+            description: |
+                Features can describe events in more detail.
+                If features are given for an event, they are additionally displayed in the title.
             name: Name
             empty: No features available.
             create:
@@ -37,6 +40,9 @@ app:
                 title: The feature %name% has been deleted.
         properties:
             title: Properties
+            description: |
+                Properties are characteristics that an event can have.
+                The icon is displayed in the event title.
             icon: Icon
             name: Name
             empty: No properties available.
