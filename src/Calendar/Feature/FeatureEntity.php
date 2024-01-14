@@ -7,7 +7,8 @@ namespace SilvioKennecke\ClubEventCalendar\Calendar\Feature;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use SilvioKennecke\ClubEventCalendar\Calendar\Event\EventTemplateEntity;
+use SilvioKennecke\ClubEventCalendar\Calendar\Event\EventEntity;
+use SilvioKennecke\ClubEventCalendar\Calendar\EventTemplate\EventTemplateEntity;
 use SilvioKennecke\ClubEventCalendar\Framework\ORM\CreatedAtTrait;
 use SilvioKennecke\ClubEventCalendar\Framework\ORM\EntityIdTrait;
 use SilvioKennecke\ClubEventCalendar\Framework\ORM\UpdatedAtTrait;
@@ -24,11 +25,44 @@ class FeatureEntity
     #[ORM\Column(type: 'string', length: 50, nullable: false)]
     private string $name;
 
-    #[ORM\ManyToMany(targetEntity: EventTemplateEntity::class, mappedBy: 'features')]
+    #[ORM\ManyToMany(targetEntity: EventEntity::class, mappedBy: 'features')]
     private Collection $events;
+
+    #[ORM\ManyToMany(targetEntity: EventTemplateEntity::class, mappedBy: 'features')]
+    private Collection $eventTemplates;
 
     public function __construct()
     {
         $this->events = new ArrayCollection();
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    public function getEvents(): Collection
+    {
+        return $this->events;
+    }
+
+    public function setEvents(Collection $events): void
+    {
+        $this->events = $events;
+    }
+
+    public function getEventTemplates(): Collection
+    {
+        return $this->eventTemplates;
+    }
+
+    public function setEventTemplates(Collection $eventTemplates): void
+    {
+        $this->eventTemplates = $eventTemplates;
     }
 }

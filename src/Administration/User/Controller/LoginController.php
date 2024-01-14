@@ -35,7 +35,7 @@ class LoginController extends AppController
     {
         $this->addFlash(
             'success',
-            $this->getTranslator()->trans('user.logoutSuccess')
+            $this->trans('user.logoutSuccess')
         );
         return $this->redirectToRoute('app.login');
     }

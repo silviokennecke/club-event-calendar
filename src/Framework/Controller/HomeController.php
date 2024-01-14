@@ -12,6 +12,6 @@ class HomeController extends AppController
     #[Route('/', name: 'app.home', methods: ['GET'])]
     public function index(): Response
     {
-        return $this->redirectToRoute('app.calendar', [], Response::HTTP_TEMPORARY_REDIRECT);
+        return $this->redirectToRoute('app.calendar');
     }
 }

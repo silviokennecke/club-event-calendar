@@ -3,6 +3,11 @@ app:
         title: Club Event Calendar
         email: E-Mail
         password: Password
+        createdAt: Created at
+        save: Save
+        create: Create
+        edit: Edit
+        delete: Delete
         logout: Logout
     account:
         my-profile:
@@ -14,8 +19,25 @@ app:
         title: Calendar
         settings:
             title: Basic Settings
-        event-templates:
+        eventTemplates:
             title: Templates
+        features:
+            title: Features
+            name: Name
+            empty: No features available.
+            create:
+                title: Create new feature
+                success: The feature %name% has been created.
+                error: The feature could not be created.
+            edit:
+                title: Edit feature
+                success: The feature %name% has been updated.
+                error: The feature %name% could not be updated.
+            delete:
+                title: The feature %name% has been deleted.
+
+
+
 flashes:
     logout:
         success: You have been logged out.

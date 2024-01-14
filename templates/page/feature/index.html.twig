@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% set metaTitle = 'app.calendar.features.title'|trans %}
+
+{% block base_content %}
+    <h1>{{ 'app.calendar.features.title'|trans }}</h1>
+
+    {% if features|length > 0 %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>{{ 'app.calendar.features.name'|trans }}</th>
+                    <th>{{ 'app.general.createdAt'|trans }}</th>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <th></th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for feature in features %}
+                    <tr>
+                        <td>{{ feature.name }}</td>
+                        <td>{{ feature.createdAt|date }}</td>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <td>
+                                <a href="{{ path('app.calendar.feature.edit', {id: feature.id}) }}" class="btn btn-light">{{ 'app.general.edit'|trans }}</a>
+                                <form action="{{ path('app.calendar.feature.delete', {id: feature.id}) }}" method="post" class="d-inline-block">
+                                    <button type="submit" class="btn btn-danger">{{ 'app.general.delete'|trans }}</button>
+                                </form>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>{{ 'app.calendar.features.empty'|trans }}</p>
+    {% endif %}
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="accordion">
+            <div class="accordion-item" id="createAccordion">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#createForm" aria-expanded="true" aria-controls="createForm">
+                        {{ 'app.calendar.features.create.title'|trans }}
+                    </button>
+                </h2>
+                <div id="createForm" class="accordion-collapse collapse" data-bs-parent="#createAccordion">
+                    <div class="accordion-body">
+                        {{ form(createForm) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}

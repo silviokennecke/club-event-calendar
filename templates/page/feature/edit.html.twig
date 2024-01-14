@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% set metaTitle = 'app.calendar.features.edit.title'|trans %}
+
+{% block base_content %}
+    <h1>{{ 'app.calendar.features.edit.title'|trans }}</h1>
+
+    {{ form(editForm) }}
+{% endblock %}

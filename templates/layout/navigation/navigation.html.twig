@@ -7,24 +7,24 @@
             },
             {
                 acl: 'ROLE_ADMIN',
-                label: 'app.calendar.event-templates.title'|trans,
-                route: 'app.event_template.list',
+                label: 'app.calendar.eventTemplates.title'|trans,
+                route: 'app.calendar.templates.index',
             },
             {
-                acl: 'ROLE_ADMIN',
+                acl: 'ROLE_USER',
                 label: 'app.calendar.settings.title'|trans,
                 children: [
                     {
                         label: 'app.calendar.features.title'|trans,
-                        route: 'app.event_template.list',
+                        route: 'app.calendar.feature.index',
                     },
                     {
                         label: 'app.calendar.properties.title'|trans,
-                        route: 'app.event_template.list',
+                        route: 'app.calendar.templates.index',
                     },
                     {
                         label: 'app.calendar.target-groups.title'|trans,
-                        route: 'app.event_template.list',
+                        route: 'app.calendar.templates.index',
                     },
                 ],
             },

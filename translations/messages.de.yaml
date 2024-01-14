@@ -3,6 +3,11 @@ app:
         title: Club Event Calendar
         email: E-Mail
         password: Passwort
+        createdAt: Erstellt am
+        save: Speichern
+        create: Erstellen
+        edit: Bearbeiten
+        delete: Löschen
         logout: Abmelden
     account:
         my-profile:
@@ -14,8 +19,25 @@ app:
         title: Kalender
         settings:
             title: Grundeinstellungen
-        event-templates:
+        eventTemplates:
             title: Vorlagen
+        features:
+            title: Besonderheiten
+            name: Name
+            empty: Keine Besonderheiten vorhanden.
+            create:
+                title: Neue Besonderheit erstellen
+                success: Die Besonderheit %name% wurde erstellt.
+                error: Die Besonderheit konnte nicht erstellt werden.
+            edit:
+                title: Besonderheit bearbeiten
+                success: Die Besonderheit %name% aktualisiert.
+                error: Die Besonderheit %name% konnte nicht aktualisiert werden.
+            delete:
+                success: Die Besonderheit %name% wurde gelöscht.
+
+
+
 flashes:
     logout:
         success: Sie wurden abgemeldet.

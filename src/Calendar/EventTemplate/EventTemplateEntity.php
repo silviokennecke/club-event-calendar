@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SilvioKennecke\ClubEventCalendar\Calendar\Event;
+namespace SilvioKennecke\ClubEventCalendar\Calendar\EventTemplate;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -36,19 +36,19 @@ class EventTemplateEntity
     #[ORM\Column(type: 'time', nullable: true)]
     private ?\DateTimeInterface $timeEnd;
 
-    #[ORM\ManyToMany(targetEntity: FeatureEntity::class, inversedBy: 'events')]
+    #[ORM\ManyToMany(targetEntity: FeatureEntity::class, inversedBy: 'eventTemplates')]
     #[ORM\JoinTable(name: 'event_template_feature')]
     private Collection $features;
 
-    #[ORM\ManyToMany(targetEntity: PropertyEntity::class, inversedBy: 'events')]
+    #[ORM\ManyToMany(targetEntity: PropertyEntity::class, inversedBy: 'eventTemplates')]
     #[ORM\JoinTable(name: 'event_template_property')]
     private Collection $properties;
 
-    #[ORM\ManyToMany(targetEntity: TargetGroupEntity::class, inversedBy: 'events')]
+    #[ORM\ManyToMany(targetEntity: TargetGroupEntity::class, inversedBy: 'eventTemplates')]
     #[ORM\JoinTable(name: 'event_template_target_group')]
     private Collection $targetGroups;
 
-    #[ORM\ManyToOne(targetEntity: LocationEntity::class, inversedBy: 'events')]
+    #[ORM\ManyToOne(targetEntity: LocationEntity::class, inversedBy: 'eventTemplates')]
     private ?LocationEntity $location = null;
 
     public function __construct()
@@ -56,5 +56,85 @@ class EventTemplateEntity
         $this->features = new ArrayCollection();
         $this->properties = new ArrayCollection();
         $this->targetGroups = new ArrayCollection();
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    public function getEventName(): string
+    {
+        return $this->eventName;
+    }
+
+    public function setEventName(string $eventName): void
+    {
+        $this->eventName = $eventName;
+    }
+
+    public function getTimeBegin(): ?\DateTimeInterface
+    {
+        return $this->timeBegin;
+    }
+
+    public function setTimeBegin(?\DateTimeInterface $timeBegin): void
+    {
+        $this->timeBegin = $timeBegin;
+    }
+
+    public function getTimeEnd(): ?\DateTimeInterface
+    {
+        return $this->timeEnd;
+    }
+
+    public function setTimeEnd(?\DateTimeInterface $timeEnd): void
+    {
+        $this->timeEnd = $timeEnd;
+    }
+
+    public function getFeatures(): Collection
+    {
+        return $this->features;
+    }
+
+    public function setFeatures(Collection $features): void
+    {
+        $this->features = $features;
+    }
+
+    public function getProperties(): Collection
+    {
+        return $this->properties;
+    }
+
+    public function setProperties(Collection $properties): void
+    {
+        $this->properties = $properties;
+    }
+
+    public function getTargetGroups(): Collection
+    {
+        return $this->targetGroups;
+    }
+
+    public function setTargetGroups(Collection $targetGroups): void
+    {
+        $this->targetGroups = $targetGroups;
+    }
+
+    public function getLocation(): ?LocationEntity
+    {
+        return $this->location;
+    }
+
+    public function setLocation(?LocationEntity $location): void
+    {
+        $this->location = $location;
     }
 }

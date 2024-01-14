@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SilvioKennecke\ClubEventCalendar\Calendar\EventTemplate;
+namespace SilvioKennecke\ClubEventCalendar\Calendar\Event;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -59,5 +59,95 @@ class EventEntity
         $this->features = new ArrayCollection();
         $this->properties = new ArrayCollection();
         $this->targetGroups = new ArrayCollection();
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    public function getDate(): \DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): void
+    {
+        $this->date = $date;
+    }
+
+    public function getTimeBegin(): ?\DateTimeInterface
+    {
+        return $this->timeBegin;
+    }
+
+    public function setTimeBegin(?\DateTimeInterface $timeBegin): void
+    {
+        $this->timeBegin = $timeBegin;
+    }
+
+    public function getTimeEnd(): ?\DateTimeInterface
+    {
+        return $this->timeEnd;
+    }
+
+    public function setTimeEnd(?\DateTimeInterface $timeEnd): void
+    {
+        $this->timeEnd = $timeEnd;
+    }
+
+    public function isDraft(): bool
+    {
+        return $this->isDraft;
+    }
+
+    public function setIsDraft(bool $isDraft): void
+    {
+        $this->isDraft = $isDraft;
+    }
+
+    public function getFeatures(): Collection
+    {
+        return $this->features;
+    }
+
+    public function setFeatures(Collection $features): void
+    {
+        $this->features = $features;
+    }
+
+    public function getProperties(): Collection
+    {
+        return $this->properties;
+    }
+
+    public function setProperties(Collection $properties): void
+    {
+        $this->properties = $properties;
+    }
+
+    public function getTargetGroups(): Collection
+    {
+        return $this->targetGroups;
+    }
+
+    public function setTargetGroups(Collection $targetGroups): void
+    {
+        $this->targetGroups = $targetGroups;
+    }
+
+    public function getLocation(): ?LocationEntity
+    {
+        return $this->location;
+    }
+
+    public function setLocation(?LocationEntity $location): void
+    {
+        $this->location = $location;
     }
 }

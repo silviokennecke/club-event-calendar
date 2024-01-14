@@ -7,7 +7,8 @@ namespace SilvioKennecke\ClubEventCalendar\Calendar\Location;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use SilvioKennecke\ClubEventCalendar\Calendar\Event\EventTemplateEntity;
+use SilvioKennecke\ClubEventCalendar\Calendar\Event\EventEntity;
+use SilvioKennecke\ClubEventCalendar\Calendar\EventTemplate\EventTemplateEntity;
 use SilvioKennecke\ClubEventCalendar\Framework\ORM\CreatedAtTrait;
 use SilvioKennecke\ClubEventCalendar\Framework\ORM\EntityIdTrait;
 use SilvioKennecke\ClubEventCalendar\Framework\ORM\UpdatedAtTrait;
@@ -27,8 +28,11 @@ class LocationEntity
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $address;
 
-    #[ORM\OneToMany(targetEntity: EventTemplateEntity::class, mappedBy: 'location')]
+    #[ORM\OneToMany(targetEntity: EventEntity::class, mappedBy: 'location')]
     private Collection $events;
+
+    #[ORM\OneToMany(targetEntity: EventTemplateEntity::class, mappedBy: 'location')]
+    private Collection $eventTemplates;
 
     public function __construct()
     {
@@ -53,5 +57,25 @@ class LocationEntity
     public function setAddress(?string $address): void
     {
         $this->address = $address;
+    }
+
+    public function getEvents(): Collection
+    {
+        return $this->events;
+    }
+
+    public function setEvents(Collection $events): void
+    {
+        $this->events = $events;
+    }
+
+    public function getEventTemplates(): Collection
+    {
+        return $this->eventTemplates;
+    }
+
+    public function setEventTemplates(Collection $eventTemplates): void
+    {
+        $this->eventTemplates = $eventTemplates;
     }
 }
