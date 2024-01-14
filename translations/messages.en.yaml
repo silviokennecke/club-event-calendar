@@ -35,6 +35,21 @@ app:
                 error: The feature %name% could not be updated.
             delete:
                 title: The feature %name% has been deleted.
+        properties:
+            title: Properties
+            icon: Icon
+            name: Name
+            empty: No properties available.
+            create:
+                title: Create new property
+                success: The property %name% has been created.
+                error: The property could not be created.
+            edit:
+                title: Edit property
+                success: The property %name% has been updated.
+                error: The property %name% could not be updated.
+            delete:
+                success: The property %name% has been deleted.
 
 
 

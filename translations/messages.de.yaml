@@ -35,6 +35,23 @@ app:
                 error: Die Besonderheit %name% konnte nicht aktualisiert werden.
             delete:
                 success: Die Besonderheit %name% wurde gelöscht.
+        properties:
+            title: Eigenschaften
+            icon: Icon
+            name: Name
+            empty: Keine Eigenschaften vorhanden.
+            create: Neue Eigenschaft erstellen
+            edit:
+                title: Eigenschaft bearbeiten
+            flashes:
+                create:
+                    success: Die Eigenschaft %name% wurde erstellt.
+                    error: Die Eigenschaft konnte nicht erstellt werden.
+                update:
+                    success: Die Eigenschaft %name% wurde aktualisiert.
+                    error: Die Eigenschaft %name% konnte nicht aktualisiert werden.
+                delete: Die Eigenschaft %name% wurde gelöscht.
+
 
 
 
